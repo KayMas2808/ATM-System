@@ -110,6 +110,7 @@ public class Login extends JFrame implements ActionListener{
                 clear.setForeground(Color.WHITE);
                 signUp.setBackground(Color.BLACK);
                 signUp.setForeground(Color.WHITE);
+                lightMode.setBackground(Color.WHITE);
                 mode = 'l';
             }
             else if (mode == 'l'){
@@ -123,6 +124,7 @@ public class Login extends JFrame implements ActionListener{
                 clear.setForeground(Color.BLACK);
                 signUp.setBackground(Color.WHITE);
                 signUp.setForeground(Color.BLACK);
+                lightMode.setBackground(Color.darkGray);
                 mode = 'd';
             }
         }
