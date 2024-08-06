@@ -5,9 +5,11 @@ import java.awt.event.*;
 
 public class Login extends JFrame implements ActionListener{
     
-    JButton login, clear, signUp;
+    JButton login, clear, signUp, lightMode, darkMode;
+    char mode = 'd';
     JTextField cardNoTxtField;
     JPasswordField pinTxtField;
+    JLabel text,cardno, pin;
     Login(){
         setTitle("Automated Teller Machine");
         
@@ -20,13 +22,13 @@ public class Login extends JFrame implements ActionListener{
         label.setBounds(90,10,100,100);
         add(label);//place object on frame using add
         
-        JLabel text = new JLabel("Welcome to ATM");
+        text = new JLabel("Welcome to ATM");
         text.setFont(new Font("Osward", Font.BOLD,38));
         text.setBounds(250,40,400,30);
         text.setForeground(Color.WHITE);
         add(text);
         
-        JLabel cardno = new JLabel("Card Num.:");
+        cardno = new JLabel("Card Num.:");
         cardno.setFont(new Font("Raleway", Font.BOLD,28));
         cardno.setBounds(120,150,210,30);
         cardno.setForeground(Color.WHITE);
@@ -37,7 +39,7 @@ public class Login extends JFrame implements ActionListener{
         cardNoTxtField.setFont(new Font("Raleway", Font.PLAIN, 14));
         add(cardNoTxtField);
         
-        JLabel pin = new JLabel("Pin:");
+        pin = new JLabel("Pin:");
         pin.setFont(new Font("Raleway", Font.BOLD,28));
         pin.setBounds(120,220,150,30);
         pin.setForeground(Color.WHITE);
@@ -69,8 +71,17 @@ public class Login extends JFrame implements ActionListener{
         signUp.addActionListener(this);
         add(signUp);
         
-        getContentPane().setBackground(Color.darkGray);
+        ImageIcon ldMode = new ImageIcon(ClassLoader.getSystemResource("icons/brightness.png"));//for icon
+        Image ldMode2 = ldMode.getImage().getScaledInstance(30, 30, Image.SCALE_DEFAULT);
+        ImageIcon ldMode3 = new ImageIcon(ldMode2);
+        lightMode = new JButton(ldMode3);
+        lightMode.setBounds(740,10,30,30);
+        lightMode.setBackground(Color.darkGray);
+        lightMode.setForeground(Color.WHITE);
+        lightMode.addActionListener(this);
+        add(lightMode);
         
+        getContentPane().setBackground(Color.darkGray);//window bg color
         setSize(800,480);//frame dimensions
         setVisible(true);//make it visible
         setLocation(200,100);//set its location on the screen(x,y)
@@ -87,10 +98,37 @@ public class Login extends JFrame implements ActionListener{
         else if (ae.getSource() == signUp){
             
         }
+        else if (ae.getSource() == lightMode){
+            if (mode == 'd'){
+                getContentPane().setBackground(Color.WHITE);
+                text.setForeground(Color.BLACK);
+                cardno.setForeground(Color.BLACK);
+                pin.setForeground(Color.BLACK);
+                login.setBackground(Color.BLACK);
+                login.setForeground(Color.WHITE);
+                clear.setBackground(Color.BLACK);
+                clear.setForeground(Color.WHITE);
+                signUp.setBackground(Color.BLACK);
+                signUp.setForeground(Color.WHITE);
+                mode = 'l';
+            }
+            else if (mode == 'l'){
+                getContentPane().setBackground(Color.darkGray);
+                text.setForeground(Color.WHITE);
+                cardno.setForeground(Color.WHITE);
+                pin.setForeground(Color.WHITE);
+                login.setBackground(Color.WHITE);
+                login.setForeground(Color.BLACK);
+                clear.setBackground(Color.WHITE);
+                clear.setForeground(Color.BLACK);
+                signUp.setBackground(Color.WHITE);
+                signUp.setForeground(Color.BLACK);
+                mode = 'd';
+            }
+        }
     }
 
     public static void main(String args[]) {
-        new Login();
-        
+        new Login(); 
     }
 }
