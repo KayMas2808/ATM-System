@@ -8,6 +8,8 @@ import java.util.*;
 public class SignUp1 extends JFrame{
     SignUp1(){
         setLayout(null);
+        
+        //window heading
         Random ran = new Random();
         long random = Math.abs((ran.nextLong()%9000L)+1000L);
         JLabel formNo = new JLabel("Application Form Number " + random);
@@ -63,33 +65,36 @@ public class SignUp1 extends JFrame{
         //marital
         JLabel marritalStat = new JLabel("Marital Status:");
         marritalStat.setFont(new Font("Raleway", Font.BOLD,20));
-        marritalStat.setBounds(100,360,200,30);
+        marritalStat.setBounds(100,390,200,30);
         add(marritalStat);
         
         //address
         JLabel addr = new JLabel("Address:");
         addr.setFont(new Font("Raleway", Font.BOLD,20));
-        addr.setBounds(100,410,200,30);
+        addr.setBounds(100,440,200,30);
         add(addr);
         
         //city
         JLabel city = new JLabel("City:");
         city.setFont(new Font("Raleway", Font.BOLD,20));
-        city.setBounds(100,460,200,30);
+        city.setBounds(100,490,200,30);
         add(city);
         
         //state
         JLabel state = new JLabel("State:");
         state.setFont(new Font("Raleway", Font.BOLD,20));
-        state.setBounds(100,510,200,30);
+        state.setBounds(100,540,200,30);
         add(state);
         
         //pincode
         JLabel pincode = new JLabel("Pincode:");
         pincode.setFont(new Font("Raleway", Font.BOLD,20));
-        pincode.setBounds(100,560,200,30);
+        pincode.setBounds(100,590,200,30);
         add(pincode);
         
+        
+        //frame settings
+        setTitle("Sign Up Page 1");
         getContentPane().setBackground(Color.WHITE);
         setSize(850,800);
         setLocation(200,10);

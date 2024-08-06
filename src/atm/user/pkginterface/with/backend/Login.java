@@ -23,11 +23,13 @@ public class Login extends JFrame implements ActionListener{
         JLabel text = new JLabel("Welcome to ATM");
         text.setFont(new Font("Osward", Font.BOLD,38));
         text.setBounds(250,40,400,30);
+        text.setForeground(Color.WHITE);
         add(text);
         
         JLabel cardno = new JLabel("Card Num.:");
         cardno.setFont(new Font("Raleway", Font.BOLD,28));
         cardno.setBounds(120,150,210,30);
+        cardno.setForeground(Color.WHITE);
         add(cardno);
         
         cardNoTxtField = new JTextField();//for taking text input
@@ -38,6 +40,7 @@ public class Login extends JFrame implements ActionListener{
         JLabel pin = new JLabel("Pin:");
         pin.setFont(new Font("Raleway", Font.BOLD,28));
         pin.setBounds(120,220,150,30);
+        pin.setForeground(Color.WHITE);
         add(pin);
         
         pinTxtField = new JPasswordField();//for taking text input
@@ -47,26 +50,26 @@ public class Login extends JFrame implements ActionListener{
         
         login = new JButton("Sign In");
         login.setBounds(300,300,100,30);
-        login.setBackground(Color.BLACK);
-        login.setForeground(Color.WHITE);
+        login.setBackground(Color.WHITE);
+        login.setForeground(Color.BLACK);
         login.addActionListener(this);
         add(login);
         
         clear = new JButton("Clear");
         clear.setBounds(430,300,100,30);
-        clear.setBackground(Color.BLACK);
-        clear.setForeground(Color.WHITE);
+        clear.setBackground(Color.WHITE);
+        clear.setForeground(Color.BLACK);
         clear.addActionListener(this);
         add(clear);
         
         signUp = new JButton("Sign Up");
         signUp.setBounds(300,350,230,30);
-        signUp.setBackground(Color.BLACK);
-        signUp.setForeground(Color.WHITE);
+        signUp.setBackground(Color.WHITE);
+        signUp.setForeground(Color.BLACK);
         signUp.addActionListener(this);
         add(signUp);
         
-        getContentPane().setBackground(Color.WHITE);
+        getContentPane().setBackground(Color.darkGray);
         
         setSize(800,480);//frame dimensions
         setVisible(true);//make it visible
