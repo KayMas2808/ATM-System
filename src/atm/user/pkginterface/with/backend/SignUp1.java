@@ -6,6 +6,7 @@ import java.awt.*;
 import java.util.*;
 
 public class SignUp1 extends JFrame{
+    JTextField nameTxtField,fatNameTxtField, emailTxtField, addrTxtField, cityTxtField, stateTxtField, pincodeTextField;
     SignUp1(){
         setLayout(null);
         
@@ -28,7 +29,7 @@ public class SignUp1 extends JFrame{
         name.setBounds(100,140,100,30);
         add(name);
         
-        JTextField nameTxtField = new JTextField();
+        nameTxtField = new JTextField();
         nameTxtField.setFont(new Font("Raleway", Font.PLAIN,14));
         nameTxtField.setBounds(320,140,300,30);
         add(nameTxtField);
@@ -39,7 +40,7 @@ public class SignUp1 extends JFrame{
         fatName.setBounds(100,190,200,30);
         add(fatName);
         
-        JTextField fatNameTxtField = new JTextField();
+        fatNameTxtField = new JTextField();
         fatNameTxtField.setFont(new Font("Raleway", Font.PLAIN,14));
         fatNameTxtField.setBounds(320,190,300,30);
         add(fatNameTxtField);
@@ -62,6 +63,11 @@ public class SignUp1 extends JFrame{
         email.setBounds(100,340,200,30);
         add(email);
         
+        emailTxtField = new JTextField();
+        emailTxtField.setFont(new Font("Raleway", Font.PLAIN,14));
+        emailTxtField.setBounds(320,340,300,30);
+        add(emailTxtField);
+        
         //marital
         JLabel marritalStat = new JLabel("Marital Status:");
         marritalStat.setFont(new Font("Raleway", Font.BOLD,20));
@@ -74,11 +80,21 @@ public class SignUp1 extends JFrame{
         addr.setBounds(100,440,200,30);
         add(addr);
         
+        addrTxtField = new JTextField();
+        addrTxtField.setFont(new Font("Raleway", Font.PLAIN,14));
+        addrTxtField.setBounds(320,440,300,30);
+        add(addrTxtField);
+        
         //city
         JLabel city = new JLabel("City:");
         city.setFont(new Font("Raleway", Font.BOLD,20));
         city.setBounds(100,490,200,30);
         add(city);
+        
+        cityTxtField = new JTextField();
+        cityTxtField.setFont(new Font("Raleway", Font.PLAIN,14));
+        cityTxtField.setBounds(320,490,300,30);
+        add(cityTxtField);
         
         //state
         JLabel state = new JLabel("State:");
@@ -86,12 +102,21 @@ public class SignUp1 extends JFrame{
         state.setBounds(100,540,200,30);
         add(state);
         
+        stateTxtField = new JTextField();
+        stateTxtField.setFont(new Font("Raleway", Font.PLAIN,14));
+        stateTxtField.setBounds(320,540,300,30);
+        add(stateTxtField);
+        
         //pincode
         JLabel pincode = new JLabel("Pincode:");
         pincode.setFont(new Font("Raleway", Font.BOLD,20));
         pincode.setBounds(100,590,200,30);
         add(pincode);
         
+        pincodeTextField = new JTextField();
+        pincodeTextField.setFont(new Font("Raleway", Font.PLAIN,14));
+        pincodeTextField.setBounds(320,590,300,30);
+        add(pincodeTextField);
         
         //frame settings
         setTitle("Sign Up Page 1");
