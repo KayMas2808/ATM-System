@@ -1,5 +1,6 @@
 package atm.user.pkginterface.with.backend;
 
+import com.toedter.calendar.JDateChooser;
 import java.awt.Color;
 import javax.swing.*;
 import java.awt.*;
@@ -7,6 +8,9 @@ import java.util.*;
 
 public class SignUp1 extends JFrame{
     JTextField nameTxtField,fatNameTxtField, emailTxtField, addrTxtField, cityTxtField, stateTxtField, pincodeTextField;
+    JDateChooser dateOfB;
+    JRadioButton maleRadio,femaleRadio,nonBinRadio,married,unmarried,otherMarital;
+    JButton next;
     SignUp1(){
         setLayout(null);
         
@@ -51,11 +55,35 @@ public class SignUp1 extends JFrame{
         dob.setBounds(100,240,200,30);
         add(dob);
         
+        dateOfB = new JDateChooser();
+        dateOfB.setBounds(320,240,300,30);
+        add(dateOfB);
+        
         //gender
         JLabel gender = new JLabel("Gender:");
         gender.setFont(new Font("Raleway", Font.BOLD,20));
         gender.setBounds(100,290,200,30);
         add(gender);
+        
+        maleRadio = new JRadioButton("Male");
+        maleRadio.setBounds(320,290,60,30);
+        maleRadio.setBackground(Color.WHITE);
+        add(maleRadio);
+        
+        femaleRadio = new JRadioButton("Female");
+        femaleRadio.setBounds(400,290,70,30);
+        femaleRadio.setBackground(Color.WHITE);
+        add(femaleRadio);
+        
+        nonBinRadio = new JRadioButton("Non-Binary");
+        nonBinRadio.setBounds(500,290,90,30);
+        nonBinRadio.setBackground(Color.WHITE);
+        add(nonBinRadio);
+        
+        ButtonGroup genderGrp = new ButtonGroup();
+        genderGrp.add(maleRadio);
+        genderGrp.add(femaleRadio);
+        genderGrp.add(nonBinRadio);
         
         //email
         JLabel email = new JLabel("Email Address:");
@@ -73,6 +101,26 @@ public class SignUp1 extends JFrame{
         marritalStat.setFont(new Font("Raleway", Font.BOLD,20));
         marritalStat.setBounds(100,390,200,30);
         add(marritalStat);
+        
+        married = new JRadioButton("Married");
+        married.setBounds(320,390,70,30);
+        married.setBackground(Color.WHITE);
+        add(married);
+        
+        unmarried = new JRadioButton("Un-Married");
+        unmarried.setBounds(400,390,90,30);
+        unmarried.setBackground(Color.WHITE);
+        add(unmarried);
+        
+        otherMarital = new JRadioButton("Other");
+        otherMarital.setBounds(500,390,90,30);
+        otherMarital.setBackground(Color.WHITE);
+        add(otherMarital);
+        
+        ButtonGroup maritalGrp = new ButtonGroup();
+        maritalGrp.add(married);
+        maritalGrp.add(unmarried);
+        maritalGrp.add(otherMarital);
         
         //address
         JLabel addr = new JLabel("Address:");
@@ -117,6 +165,14 @@ public class SignUp1 extends JFrame{
         pincodeTextField.setFont(new Font("Raleway", Font.PLAIN,14));
         pincodeTextField.setBounds(320,590,300,30);
         add(pincodeTextField);
+        
+        //next page button
+        next = new JButton("Next Page >");
+        next.setBackground(Color.BLACK);
+        next.setForeground(Color.WHITE);
+        next.setFont(new Font("Raleway",Font.BOLD,14));
+        next.setBounds(670,80,140,30);
+        add(next);
         
         //frame settings
         setTitle("Sign Up Page 1");
