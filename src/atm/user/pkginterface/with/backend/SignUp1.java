@@ -5,18 +5,20 @@ import java.awt.Color;
 import javax.swing.*;
 import java.awt.*;
 import java.util.*;
+import java.awt.event.*;
 
-public class SignUp1 extends JFrame{
+public class SignUp1 extends JFrame implements ActionListener{
     JTextField nameTxtField,fatNameTxtField, emailTxtField, addrTxtField, cityTxtField, stateTxtField, pincodeTextField;
     JDateChooser dateOfB;
     JRadioButton maleRadio,femaleRadio,nonBinRadio,married,unmarried,otherMarital;
     JButton next;
+    long random;
     SignUp1(){
         setLayout(null);
         
         //window heading
         Random ran = new Random();
-        long random = Math.abs((ran.nextLong()%9000L)+1000L);
+        random = Math.abs((ran.nextLong()%9000L)+1000L);
         JLabel formNo = new JLabel("Application Form Number " + random);
         formNo.setFont(new Font("Osward", Font.BOLD,38));
         formNo.setBounds(140,20,600,40);
@@ -172,6 +174,7 @@ public class SignUp1 extends JFrame{
         next.setForeground(Color.WHITE);
         next.setFont(new Font("Raleway",Font.BOLD,14));
         next.setBounds(670,80,140,30);
+        next.addActionListener(this);
         add(next);
         
         //frame settings
@@ -180,6 +183,54 @@ public class SignUp1 extends JFrame{
         setSize(850,800);
         setLocation(200,10);
         setVisible(true);
+    }
+    
+    public void actionPerformed(ActionEvent ae){
+        String formno = ""+random;
+        String name = nameTxtField.getText();
+        String fatName = fatNameTxtField.getText();
+        String addr = addrTxtField.getText();
+        String email = emailTxtField.getText();
+        String city = cityTxtField.getText();
+        String state = stateTxtField.getText();
+        String pincode = pincodeTextField.getText();
+        
+        String dob = ((JTextField)dateOfB.getDateEditor().getUiComponent()).getText();
+        String gender = null;
+        if (maleRadio.isSelected()){
+            gender = "Male";
+        }
+        else if (femaleRadio.isSelected()){
+            gender = "Female";
+        }
+        else if (nonBinRadio.isSelected()){
+            gender = "Non-Binary";
+        }
+        String maritalStatus = null;
+        if (married.isSelected()){
+            maritalStatus = "Married";
+        }
+        else if (unmarried.isSelected()){
+            maritalStatus = "Un-Married";
+        }
+        else if (otherMarital.isSelected()){
+            maritalStatus = "Other";
+        }
+        
+        try{
+            if (name.equals("")){
+                JOptionPane.showMessageDialog(null, "Name is required");
+            }
+            else{
+                Conn c = new Conn();
+                //step 3 of connection:
+                String query = "INSERT INTO signup VALUES('"+formno+"','"+name+"','"+fatName+"','"+dob+"','"+gender+"','"+email+"','"+maritalStatus+"','"+addr+"','"+city+"','"+state+"','"+pincode+"')";
+                c.s.executeUpdate(query);
+            }
+        }
+        catch (Exception e){
+            System.out.println(e);
+        }
     }
 
     public static void main(String args[]) {
