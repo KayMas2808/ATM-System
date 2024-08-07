@@ -15,7 +15,7 @@ public class Conn {
     public Conn(){
         try{
             //step 1
-            //no need since ava does it itself - Class.forName(com.mysql.cj.jdbc.Driver);
+            //no need since java does it itself - Class.forName(com.mysql.cj.jdbc.Driver);
             //s2
             c = DriverManager.getConnection("jdbc:mysql:///atmSystem","root","Special26&&$$");
             //s3
