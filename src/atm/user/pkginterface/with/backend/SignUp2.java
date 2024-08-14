@@ -198,7 +198,9 @@ public class SignUp2 extends JFrame implements ActionListener{
             else{
                 Conn c = new Conn();
                 //step 3 of connection:
-                String query = "INSERT INTO signup2 VALUES('"+formno+"','"+religionVal+"','"+categoryVal+"','"+incomeVal+"','"+educationVal+"','"+occupationVal+"','"+senior+"','"+existingAcc+"','"+panNo+"','"+aadharNo+"')";
+                String query = "UPDATE signup SET religionVal='"+religionVal+"', categoryVal='"+categoryVal+"', incomeVal='"+incomeVal+"', educationVal='"+educationVal+"', occupationVal='"+occupationVal+"', senior='"+senior+"', existingAcc='"+existingAcc+"', panNo='"+panNo+"', aadharNo='"+aadharNo+"' " +
+                         "WHERE formno='"+formno+"'";
+
                 c.s.executeUpdate(query);
             }
         }
