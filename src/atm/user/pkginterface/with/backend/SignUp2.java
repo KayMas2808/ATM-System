@@ -13,7 +13,6 @@ public class SignUp2 extends JFrame implements ActionListener{
     String formno;
     SignUp2(String formno){
         this.formno = formno;
-        setLayout(null);
        
         
         JLabel addDet = new JLabel("Additional Details: Page 2");
@@ -161,6 +160,7 @@ public class SignUp2 extends JFrame implements ActionListener{
         
         //frame settings
         setTitle("Sign Up Page 2");
+        setLayout(null);
         getContentPane().setBackground(Color.WHITE);
         setSize(850,800);
         setLocation(200,10);
