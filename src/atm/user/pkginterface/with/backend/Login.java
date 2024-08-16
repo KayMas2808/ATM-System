@@ -2,6 +2,7 @@ package atm.user.pkginterface.with.backend;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
+import java.sql.*;
 
 public class Login extends JFrame implements ActionListener{
     
@@ -93,7 +94,23 @@ public class Login extends JFrame implements ActionListener{
             pinTxtField.setText("");
         }
         else if (ae.getSource() == login){
-            
+            Conn c = new Conn();
+            String cardNumber = cardNoTxtField.getText();
+            String pinNumber = pinTxtField.getText();
+            String query = "SELECT cardno,pin FROM signup WHERE cardno = '" + cardNumber + "' AND pin = '" + pinNumber + "';";
+            try{
+                ResultSet rs = c.s.executeQuery(query);
+                if (rs.next()){
+                    setVisible(false);
+                    new Transaction(cardNumber,pinNumber).setVisible(true);
+                }
+                else{
+                    JOptionPane.showMessageDialog(null,"Incorrect Card Number/Pin");
+                }
+            }
+            catch(Exception e){
+                System.out.println(e);
+            }
         }
         else if (ae.getSource() == signUp){
             setVisible(false);

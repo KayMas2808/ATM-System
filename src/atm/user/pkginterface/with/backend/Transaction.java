@@ -6,9 +6,11 @@ import java.awt.event.*;
 public class Transaction extends JFrame implements ActionListener{
     
     JButton deposit,withdrawl,fastCash,pinChange, miniStatement, balance, exit;
+    String cardno, pin;
     
-    Transaction(String cardno){
-        
+    Transaction(String cardno, String pin){
+        this.cardno = cardno;
+        this.pin = pin;
         
         //background image
         ImageIcon i1 = new ImageIcon (ClassLoader.getSystemResource("icons/atm.jpg"));
@@ -96,6 +98,6 @@ public class Transaction extends JFrame implements ActionListener{
         }
     }
     public static void main(String args[]) {
-        new Transaction("");
+        new Transaction("","");
     }
 }
