@@ -203,6 +203,8 @@ public class SignUp2 extends JFrame implements ActionListener{
                          "WHERE formno='"+formno+"'";
 
                 c.s.executeUpdate(query);
+                setVisible(false);
+                new SignUp3(formno).setVisible(true);
             }
         }
         catch (Exception e){

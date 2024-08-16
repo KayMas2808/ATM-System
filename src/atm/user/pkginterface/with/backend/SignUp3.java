@@ -6,13 +6,13 @@ import java.awt.event.*;
 import javax.swing.border.Border;
 
 
-public class SignUp3 extends JFrame{
+public class SignUp3 extends JFrame implements ActionListener{
     
     JRadioButton savingAcc, recurringAcc, currentAcc, FDAcc;
     JCheckBox atm,internet,mobile,email,chequeBook,eStatement,declare;
     JButton submit, cancel;
     String pin, cardno;
-    SignUp3(){
+    SignUp3(String formno){
         JLabel headingLabel = new JLabel("Page 3: Account Details");
         headingLabel.setFont(new Font("Raleway", Font.BOLD,22));
         headingLabel.setBounds(300,5,400,40);
@@ -142,17 +142,20 @@ public class SignUp3 extends JFrame{
         
         submit = new JButton("Submit");
         submit.setFont(new Font ("Raleway",Font.BOLD,14));
-        submit.setBackground(Color.BLACK);
+        submit.setBackground(Color.WHITE);
         submit.setForeground(Color.GREEN);
-        submit.setBounds(300,500,100,30);
+        submit.setBorder(new RoundedBorder(30));
+        submit.setBounds(280,500,130,30);
+        submit.addActionListener(this);
         add(submit);
         
         cancel = new JButton("Cancel");
         cancel.setFont(new Font ("Raleway",Font.BOLD,14));
-        cancel.setBackground(Color.BLACK);
-        cancel.setForeground(Color.red);
-        //cancel.setBorder();
-        cancel.setBounds(450,500,100,30);
+        cancel.setBackground(Color.WHITE);
+        cancel.setForeground(Color.RED);
+        cancel.setBorder(new RoundedBorder(30));
+        cancel.setBounds(450,500,130,30);
+        cancel.addActionListener(this);
         add(cancel);
         
         
@@ -164,8 +167,13 @@ public class SignUp3 extends JFrame{
         setLayout(null);
         setVisible(true);
     }
+    public void actionPerformed(ActionEvent ae){
+        if(ae.getSource()==submit){
+            
+        }
+    }
 
     public static void main(String args[]) {
-        new SignUp3();
+        new SignUp3("");
     }
 }
