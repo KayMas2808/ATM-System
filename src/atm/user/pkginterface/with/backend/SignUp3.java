@@ -12,7 +12,10 @@ public class SignUp3 extends JFrame implements ActionListener{
     JCheckBox atm,internet,mobile,email,chequeBook,eStatement,declare;
     JButton submit, cancel;
     String pin, cardno;
+    String formno;
     SignUp3(String formno){
+        this.formno = formno;
+        
         JLabel headingLabel = new JLabel("Page 3: Account Details");
         headingLabel.setFont(new Font("Raleway", Font.BOLD,22));
         headingLabel.setBounds(300,5,400,40);
@@ -62,10 +65,10 @@ public class SignUp3 extends JFrame implements ActionListener{
         
         int min = 1000;
         int max = 9999;
-        int card1st = (int) (Math.random() * (max - min + 1)) + min;
-        int card2nd = (int) (Math.random() * (max - min + 1)) + min;
-        int card3rd = (int) (Math.random() * (max - min + 1)) + min;
-        int card4th = (int) (Math.random() * (max - min + 1)) + min;
+        int card1st = Math.abs((int) (Math.random() * (max - min + 1)) + min);
+        int card2nd = Math.abs((int) (Math.random() * (max - min + 1)) + min);
+        int card3rd = Math.abs((int) (Math.random() * (max - min + 1)) + min);
+        int card4th = Math.abs((int) (Math.random() * (max - min + 1)) + min);
         
         cardno = ""+card1st + card2nd + card3rd + card4th;
         
@@ -74,7 +77,7 @@ public class SignUp3 extends JFrame implements ActionListener{
         cardNoLabel.setBounds(320,150,250,30);
         add(cardNoLabel);
         
-        int pint = (int) (Math.random() * (max - min + 1)) + min;
+        int pint = Math.abs((int) (Math.random() * (max - min + 1)) + min);
         pin = ""+pint;
         
         JLabel pinLabel = new JLabel("Pin:");
@@ -169,6 +172,52 @@ public class SignUp3 extends JFrame implements ActionListener{
     }
     public void actionPerformed(ActionEvent ae){
         if(ae.getSource()==submit){
+            String accType =null;
+            //savingAcc, recurringAcc, currentAcc, FDAcc
+            if (savingAcc.isSelected()){
+                accType = "Savings Account";
+            }
+            else if (recurringAcc.isSelected()){
+                accType = "Recurring Account";
+            }
+            else if (currentAcc.isSelected()){
+                accType = "Current Account";
+            }
+            else if (FDAcc.isSelected()){
+                accType = "FD Account";
+            }
+            String facility = "";
+            
+            //atm,internet,mobile,email,chequeBook,eStatement,declare
+            if (atm.isSelected()){
+                facility = facility + " ATM Card";
+            }
+            if (internet.isSelected()){
+                facility = facility + " Internet Banking";
+            }
+            if (mobile.isSelected()){
+                facility = facility + " Mobile Banking";
+            }
+            if (chequeBook.isSelected()){
+                facility = facility + " Cheque Book";
+            }
+            if (eStatement.isSelected()){
+                facility = facility + " E-Statement";
+            }
+            try{
+                if (!(declare.isSelected())){
+                    JOptionPane.showMessageDialog(null, "Must agree to the declaration to continue.");
+                }
+                else{
+                    Conn c = new Conn();
+                    String query = "UPDATE signup SET accType='"+accType+"', facility='"+facility+"', cardno='"+cardno+"', pin='"+pin+"' WHERE formno='"+formno+"'";
+                    c.s.executeUpdate(query);
+                    
+                    JOptionPane.showMessageDialog(null,"Card Number: " + cardno + "\nPin: " + pin);
+                }
+            } catch (Exception e){
+                System.out.println(e);
+            }
             
         }
     }
