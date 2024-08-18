@@ -210,7 +210,7 @@ public class SignUp3 extends JFrame implements ActionListener{
                 }
                 else{
                     Conn c = new Conn();
-                    String query = "UPDATE signup SET accType='"+accType+"', facility='"+facility+"', cardno='"+cardno+"', pin='"+pin+"' WHERE formno='"+formno+"'";
+                    String query = "UPDATE bank_mgmt SET accType='"+accType+"', facility='"+facility+"', cardno='"+cardno+"', pin='"+pin+"' WHERE formno='"+formno+"'";
                     c.s.executeUpdate(query);
                     
                     JOptionPane.showMessageDialog(null,"Card Number: " + cardno + "\nPin: " + pin);

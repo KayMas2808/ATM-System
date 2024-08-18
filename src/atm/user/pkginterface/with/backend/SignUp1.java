@@ -224,7 +224,7 @@ public class SignUp1 extends JFrame implements ActionListener{
             else{
                 Conn c = new Conn();
                 //step 3 of connection:
-                String query = "INSERT INTO signup(formno, name, fatName, dob, gender, email, maritalStatus, addr, city, state, pincode) " +
+                String query = "INSERT INTO bank_mgmt(formno, name, fatName, dob, gender, email, maritalStatus, addr, city, state, pincode) " +
                "VALUES('"+formno+"','"+name+"','"+fatName+"','"+dob+"','"+gender+"','"+email+"','"+maritalStatus+"','"+addr+"','"+city+"','"+state+"','"+pincode+"')";
 
                 c.s.executeUpdate(query);

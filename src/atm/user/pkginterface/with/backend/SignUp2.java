@@ -199,7 +199,7 @@ public class SignUp2 extends JFrame implements ActionListener{
                 Conn c = new Conn();
                 //step 3 of connection:
                 //we're using formno as primary key and adding remaining details to db
-                String query = "UPDATE signup SET religionVal='"+religionVal+"', categoryVal='"+categoryVal+"', incomeVal='"+incomeVal+"', educationVal='"+educationVal+"', occupationVal='"+occupationVal+"', senior='"+senior+"', existingAcc='"+existingAcc+"', panNo='"+panNo+"', aadharNo='"+aadharNo+"' " +
+                String query = "UPDATE bank_mgmt SET religionVal='"+religionVal+"', categoryVal='"+categoryVal+"', incomeVal='"+incomeVal+"', educationVal='"+educationVal+"', occupationVal='"+occupationVal+"', senior='"+senior+"', existingAcc='"+existingAcc+"', panNo='"+panNo+"', aadharNo='"+aadharNo+"' " +
                          "WHERE formno='"+formno+"'";
 
                 c.s.executeUpdate(query);
