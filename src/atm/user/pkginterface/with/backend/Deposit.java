@@ -34,16 +34,19 @@ public class Deposit extends JFrame implements ActionListener{
         amt = new JTextField();
         amt.setFont(new Font("Raleway",Font.BOLD, 20));
         amt.setBounds(170,250,320,25);
+        amt.addActionListener(this);
         image.add(amt);
         
         deposit = new JButton("Deposit");
         //deposit.setBackground(Color.GREEN);
         deposit.setBounds(355,355,150,30);
+        deposit.addActionListener(this);
         image.add(deposit);
         
         back = new JButton("Back");
         //back.setBackground(Color.GREEN);
         back.setBounds(355,390,150,30);
+        back.addActionListener(this);
         image.add(back);
         
         setTitle("Deposit Money");
@@ -61,40 +64,30 @@ public class Deposit extends JFrame implements ActionListener{
             int amtInt = Integer.parseInt(amtStr);
             String getBalQuery = "SELECT balance FROM bank_mgmt WHERE cardno = "+ cardno +";";
             String depQuery = "UPDATE bank_mgmt SET balance = balance + "+ amtInt + " WHERE cardno = "+ cardno +";";
-            try{
-                int rs = c.s.executeUpdate(depQuery);
-                ResultSet rs1 = c.s.executeQuery(getBalQuery);
-                int bal = rs1.getInt(0);
-                if (rs == 1){
-                    JOptionPane.showConfirmDialog(null, "Successfully Deposited. New Balance: Rs."+bal);
-                }
-                else{
-                    JOptionPane.showMessageDialog(null,"Unable to deposit. Please Try again.");
-                }
+            try {
+            int rs = c.s.executeUpdate(depQuery);  // Execute update query
+            ResultSet rs1 = c.s.executeQuery(getBalQuery);  // Execute select query
+
+            // Move the cursor to the first row
+            if (rs1.next()) {
+                int bal = rs1.getInt(1);  // Now get the balance value
+                JOptionPane.showMessageDialog(null, "Successfully Deposited. New Balance: Rs." + bal);
+            } 
+            else {
+                JOptionPane.showMessageDialog(null, "Unable to fetch balance. Please try again.");
             }
-            catch(Exception e){
+        } 
+            catch (Exception e) {
                 System.out.println(e);
             }
         }
         else if(ae.getSource()==back){
-            String query = "SELECT cardno,pin FROM bank_mgmt WHERE cardno = '" + cardno + "' AND pin = '" + pin + "';";
-            try{
-                ResultSet rs = c.s.executeQuery(query);
-                if (rs.next()){
-                    setVisible(false);
-                    new Transaction(cardno,pin).setVisible(true);
-                }
-                else{
-                    JOptionPane.showMessageDialog(null,"Incorrect Card Number/Pin");
-                }
-            }
-            catch(Exception e){
-                System.out.println(e);
-            }
+            setVisible(false);
+            new Transaction(cardno,pin).setVisible(true);
         }
 
     }
-    public static void main(String args[]) {
+    public static void main(String[] args) {
         new Deposit("","");
     }
 }
