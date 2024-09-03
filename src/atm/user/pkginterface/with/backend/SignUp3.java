@@ -10,7 +10,7 @@ public class SignUp3 extends JFrame implements ActionListener{
     
     JRadioButton savingAcc, recurringAcc, currentAcc, FDAcc;
     JCheckBox atm,internet,mobile,email,chequeBook,eStatement,declare;
-    JButton submit, cancel;
+    JButton submit, cancel, loginP;
     String pin, cardno;
     String formno;
     SignUp3(String formno){
@@ -161,6 +161,15 @@ public class SignUp3 extends JFrame implements ActionListener{
         cancel.addActionListener(this);
         add(cancel);
         
+        loginP = new JButton("Back to Login");
+        loginP.setFont(new Font ("Raleway",Font.BOLD,14));
+        loginP.setBackground(Color.WHITE);
+        loginP.setForeground(Color.RED);
+        loginP.setBorder(new RoundedBorder(30));
+        loginP.setBounds(420,550,130,30);
+        loginP.addActionListener(this);
+        add(loginP);
+        
         
         //frame settings
         setTitle("Sign Up 3");
@@ -218,7 +227,14 @@ public class SignUp3 extends JFrame implements ActionListener{
             } catch (Exception e){
                 System.out.println(e);
             }
-            
+        }
+        else if(ae.getSource() == cancel){
+            setVisible(false);
+            new Login().setVisible(true);
+        }
+        else if (ae.getSource() == loginP){
+            setVisible(false);
+            new Login().setVisible(true);
         }
     }
 

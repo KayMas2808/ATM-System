@@ -96,6 +96,10 @@ public class Transaction extends JFrame implements ActionListener{
         if (ae.getSource() == exit){
             System.exit(0);
         }
+        else if(ae.getSource() == deposit){
+            setVisible(false);
+            new Deposit(cardno,pin).setVisible(true);
+        }
     }
     public static void main(String args[]) {
         new Transaction("","");
