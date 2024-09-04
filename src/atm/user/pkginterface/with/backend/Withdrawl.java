@@ -65,18 +65,18 @@ public class Withdrawl extends JFrame implements ActionListener{
             String getBalQuery = "SELECT balance FROM bank_mgmt WHERE cardno = "+ cardno +";";
             String depQuery = "UPDATE bank_mgmt SET balance = balance - "+ amtInt + " WHERE cardno = "+ cardno +";";
             try {
-            int rs = c.s.executeUpdate(depQuery);  // Execute update query
-            ResultSet rs1 = c.s.executeQuery(getBalQuery);  // Execute select query
+                int rs = c.s.executeUpdate(depQuery);  // Execute update query
+                ResultSet rs1 = c.s.executeQuery(getBalQuery);  // Execute select query
 
-            // Move the cursor to the first row
-            if (rs1.next()) {
-                int bal = rs1.getInt(1);  // Now get the balance value
-                JOptionPane.showMessageDialog(null, "Successfully Withdrawn. New Balance: Rs." + bal);
+                // Move the cursor to the first row
+                if (rs1.next()) {
+                    int bal = rs1.getInt(1);  // Now get the balance value
+                    JOptionPane.showMessageDialog(null, "Successfully Withdrawn. New Balance: Rs." + bal);
+                } 
+                else {
+                    JOptionPane.showMessageDialog(null, "Unable to fetch balance. Please try again.");
+                }
             } 
-            else {
-                JOptionPane.showMessageDialog(null, "Unable to fetch balance. Please try again.");
-            }
-        } 
             catch (Exception e) {
                 System.out.println(e);
             }
