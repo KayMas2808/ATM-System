@@ -85,7 +85,7 @@ public class FastCash extends JFrame implements ActionListener{
         image.add(back);
         
         //frame settings
-        setTitle("ATM Machine");
+        setTitle("Fast Cash");
         setLayout(null);
         setSize(900,680);
         setLocation(200,0);
