@@ -2,6 +2,7 @@ package atm.user.pkginterface.with.backend;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
+import java.sql.ResultSet;
 
 public class Transaction extends JFrame implements ActionListener{
     
@@ -93,6 +94,7 @@ public class Transaction extends JFrame implements ActionListener{
     }
     
     public void actionPerformed(ActionEvent ae){
+        Conn c = new Conn();
         if (ae.getSource() == exit){
             System.exit(0);
         }
@@ -111,6 +113,24 @@ public class Transaction extends JFrame implements ActionListener{
         else if (ae.getSource() == pinChange){
             setVisible(false);
             new PinChange(cardno,pin).setVisible(true);
+        }
+        else if (ae.getSource() == balance){
+            String getBalQuery = "SELECT balance FROM bank_mgmt WHERE cardno = "+ cardno +";";
+            
+            try{
+            // Move the cursor to the first row
+                ResultSet rs1 = c.s.executeQuery(getBalQuery);  // Execute select query
+                if (rs1.next()) {
+                    int bal = rs1.getInt(1);  // Now get the balance value
+                    JOptionPane.showMessageDialog(null, "Your current account balance is: Rs."+bal);
+                }
+                else {
+                    JOptionPane.showMessageDialog(null, "Unable to fetch balance. Please try again.");
+                }
+            }
+            catch(Exception e){
+                System.out.println(e);
+            }
         }
     }
     public static void main(String args[]) {
